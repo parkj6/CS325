@@ -1,0 +1,25 @@
+#!/usr/bin/python3
+
+import sys; sys.path.insert(0, './source')
+import bruteforce as BruteForce
+import naive as dnc
+import General as general
+
+# get input file name form command line
+inputFileName = str(sys.argv[1])
+
+# declare output file name
+outputFileName = "output_divideandconquer.txt"
+
+# convert text file to 2d list of points
+pointList = general.convert(inputFileName)
+
+# sort the list
+pointList = general.sortList(pointList)
+
+# run dnc min dist algo
+(shortestDistance, listOfShortestPoints) = dnc.naiveDivideConquer(pointList)
+
+# output to file
+general.writePairs(shortestDistance,listOfShortestPoints,outputFileName)
+

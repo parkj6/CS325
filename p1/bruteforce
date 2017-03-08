@@ -1,0 +1,25 @@
+#!/usr/bin/python3
+
+import sys; sys.path.insert(0, './source')
+import bruteforce as BruteForce
+import General as general
+
+# get input file name form command line
+inputFileName = str(sys.argv[1])
+
+# declare output file name
+outputFileName = "output_bruteforce.txt"
+
+# convert text file to 2d list of points
+pointList = general.convert(inputFileName)
+
+# run brute force min dist algo
+(shortestDistance, listOfShortestPoints) = BruteForce.bruteForce(pointList)
+
+# output to file
+general.writePairs(shortestDistance,listOfShortestPoints,outputFileName)
+
+
+
+
+

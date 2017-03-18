@@ -1,0 +1,37 @@
+Reduce VERTEX-COVER-SEARCH (VCS) to VERTEX-COVER DECISION (VC)
+    Input:  Graph G, integer k.
+    Output:  A vertex cover of size k, if one exists (None otherwise).
+
+ -  Idea 1:  Remove vertices one-by-one as long as resulting graph still
+    contains a vertex cover of size k.
+
+ -  Problem:  If G contains a VC of size k, then G-v (remove v and all
+    incident edges) also contains a VC of size k, whether or not v is in
+    the cover (unless k=n, trivial to solve)!
+
+ -  Idea 2:  Check if G-v contains a VC of size (k-1).
+
+ -  Algorithm:
+
+        VCS(G,k):
+            if not VC(G,k):  return None
+            C = {}  # the vertices in a vertex cover of G
+            for each vertex v in V, and while k > 0:
+                if VC(G-v, k-1):
+                    C = C + {v}; # adding v to C
+                    G = G - v #removing v and all of its incident edges
+                    k = k - 1
+            return C
+
+ -  Correctness:
+    Loop invariant: G contains a VC of size k.  At each iteration,
+     .  if G-v contains a VC of size k-1 (C), then G contains a VC of size
+        k that includes v (C u {v});
+     .  if G contains a VC of size k that includes v (C), then G-v contains
+        a VC of size k-1 (C - {v}) -- so by contrapositive: if G-v does not
+        contain a VC of size k-1, then v does not belong to any VC of size
+        k in G).
+
+ -  Runtime:  O(n*t(n,m) + n*(n+m)) -- for each vertex v, we perform one
+    call to VC in time t(n,m) and compute G-v in time O(n+m), where
+    n is the size of V and m is the size of E.

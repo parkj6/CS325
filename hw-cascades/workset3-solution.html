@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0085)http://classes.engr.oregonstate.edu/eecs/winter2012/cs325/workset3-solution.html.html -->
+<html class="gr__classes_engr_oregonstate_edu"><script data-x-lastpass="">(function(){var c=0;if("undefined"!==typeof CustomEvent&&"function"===typeof window.dispatchEvent){var a=function(a){try{if("object"===typeof a&&(a=JSON.stringify(a)),"string"===typeof a)return window.dispatchEvent(new CustomEvent("lprequeststart",{detail:{data:a,requestID:++c}})),c}catch(f){}},b=function(a){try{window.dispatchEvent(new CustomEvent("lprequestend",{detail:a}))}catch(f){}};"undefined"!==typeof XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.send&&(XMLHttpRequest.prototype.send=
+function(c){return function(f){var d=this,e=a(f);e&&d.addEventListener("loadend",function(){b({requestID:e,statusCode:d.status})});return c.apply(d,arguments)}}(XMLHttpRequest.prototype.send));"function"===typeof fetch&&(fetch=function(c){return function(f,d){var e=a(d),g=c.apply(this,arguments);if(e){var h=function(a){b({requestID:e,statusCode:a&&a.status})};g.then(h)["catch"](h)}return g}}(fetch))}})();
+(function(){if("undefined"!==typeof CustomEvent){var c=function(a){if(a.lpsubmit)return a;var b=function(){try{this.dispatchEvent(new CustomEvent("lpsubmit"))}catch(k){}return a.apply(this,arguments)};b.lpsubmit=!0;return b};window.addEventListener("DOMContentLoaded",function(){if(document&&document.forms&&0<document.forms.length)for(var a=0;a<document.forms.length;++a)document.forms[a].submit=c(document.forms[a].submit)},!0);document.createElement=function(a){return function(){var b=a.apply(this,
+arguments);b&&"FORM"===b.nodeName&&b.submit&&(b.submit=c(b.submit));return b}}(document.createElement)}})();
+</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>workset3-solution.html</title>
+  <style type="text/css">
+:root #content > #right > .dose > .dosesingle,
+:root #content > #center > .dose > .dosesingle,
+:root #header + #content > #left > #rlblock_left
+{ display: none !important; }</style></head>
+  <body data-gr-c-s-loaded="true">
+    <big>8.9 In the HITTING SET problem, we are given a family of sets
+      {S1, S2, ..., Sn} and a budget b, and<br>
+      we wish to find a set H of size b which intersects every Si, if
+      such an H exists. </big><big>Show that HITTING SET is
+      NP-complete.<br>
+      <br>
+      <span style="font-style: italic;">Solution: This is a
+        generalization of VERTEX-COVER. Or in other words Vertex-cover
+        is a special case <br>
+        of the hitting set problem. To see this, consider a given graph
+        G, turn each edge e = (u, v) into a set</span><span style="font-style: italic;"> <br>
+        containing the elements u and v. Then, finding a hitting set of
+        size at most b in this particular family</span> <span style="font-style: italic;"><br>
+        of sets is the same as finding a vertex cover of size at most b
+        for the given graph.</span><br style="font-style: italic;">
+      <br>
+      8.10</big><br>
+    <big>a) SUBGRAPH ISOMORPHISM: Given as input two undirected graphs G
+      and H, determine<br>
+      whether G is a subgraph of H (that is, whether by deleting certain
+      vertices and edges of H<br>
+      we obtain a graph that is, up to renaming of vertices, identical
+      to G), and if so, return the<br>
+      corresponding mapping of V (G) into V (H).<br>
+    </big><span style="font-style: italic;"><br>
+      &nbsp;Sol</span><big><span style="font-style: italic;">ution: We
+        can view this as a generalization of the CLIQUE problem. Given
+        an input (G, k) for CLIQUE,<br>
+        let H be a graph consisting of k vertices with every pair
+        connected by an edge (i.e. a clique of<br>
+        size k). Then G contains a clique of size k if and only if H is
+        a subgraph of G.</span><br>
+    </big><br>
+    <br>
+    (b) <big>LONGEST PATH: Given a graph G and an integer g, find in G
+      a simple path of length g.<span style="font-style: italic;"><br>
+        Solution: This is a generalization of RUDRATA-PATH. Given a
+        graph G with n vertices, let g = n − 1.</span><br style="font-style: italic;">
+      <span style="font-style: italic;">Then (G, n−1) is an instance of
+        LONGEST PATH. However, a simple path of length n−1 must</span><br style="font-style: italic;">
+      <span style="font-style: italic;">contain n vertices and hence
+        must be a Rudrata path. Also, any Rudrata path is of length n−1.</span><br style="font-style: italic;">
+      <span style="font-style: italic;">Hence for any graph with n
+        vertices, LONGEST-PATH(G, n − 1) is precisely the asking for the</span><br style="font-style: italic;">
+      <span style="font-style: italic;">Rudrata path.</span></big><br>
+    <br>
+    <big style="font-style: italic;">c) </big><big>MAX SAT: Given a CNF
+      formula and an integer g, find a truth assignment that satisfies
+      at<br>
+      least g clauses.<br>
+    </big><big style="font-style: italic;">Solution:Given a formula 
+      with m clauses, setting g = m gives SAT as a special case of
+      MAX-SAT.<br>
+      <br>
+      d) </big><big>DENSE SUBGRAPH: Given a graph and two integers a
+      and b, find a set of a vertices of G<br>
+      such that there are at least b edges between them.</big><big style="font-style: italic;"><br>
+      Solution: This also a generalization of CLIQUE. Given an instance
+      (G, k) let a = k, b = k(k − 1)/2. Any<br>
+      subgraph of G with k vertices and containing k(k −1)/2 edges, must
+      have an edge between every<br>
+      possible pair out of these k vertices and hence must be a clique.
+      Similarly, a clique on k vertices<br>
+      must contain k(k − 1)/2 edges.<br>
+      <br>
+      e) </big><big>SPARSE SUBGRAPH: Given a graph and two integers a
+      and b, find a set of a vertices of G<br>
+      such that there are at most b edges between them.<br>
+    </big><big style="font-style: italic;">Solution: This is a
+      generalization of INDEPENDENT SET. Given (G, k), an instance for
+      independent set,<br>
+      let a = k, b = 0. Then (G, a, b) is an instance for SPARSE
+      SUBGRAPH. Also, any subgraph of<br>
+      G with k vertices and 0 edges must be an independent set of size k
+      and vice-versa.<br>
+      <br>
+      f)</big><big> SET COVER. (This problem generalizes two known
+      NP-complete problems.)</big><big style="font-style: italic;"><br>
+      Solution: Generalizes VERTEX COVER. Consider each vertex as a set
+      of the edges incident upon it. Then<br>
+      a SET COVER of this family of sets corresponds exactly to picking
+      vertices (sets) such that at<br>
+      least one vertex corresponding to each edge is picked (i.e. at
+      least one set containing every element<br>
+      is picked).<br>
+      <br>
+      g) </big><big>RELIABLE NETWORK: We are given two n x n matrices,
+      a distance matrix dij and a connectivity<br>
+      requirement matrix rij , as well as a budget b; we must find a
+      graph G = ({1, 2,... ,n} ,E)<br>
+      such that (1) the total cost of all edges is b or less and (2)
+      between any two distinct vertices<br>
+      i and j there are rij vertex-disjoint paths. (Hint: Suppose that
+      all dij 's are 1 or 2, b = n, and<br>
+      all rij 's are 2. Which well known NP-complete problem is this?)<br>
+    </big><big style="font-style: italic;"><br>
+      Solution: Generalizes Rudrata cycle. Given a graph G = (V,E), take
+      b = n and dij = 1 for all (i,j) in E and<br>
+      dij = 2 otherwise. Also, take rij = 2 for every (i, j).<br>
+      Then this is an instance of the RELIABLE NETWORK problem which
+      corresponds to picking<br>
+      few edges such that the sum of the weights of all the edges is n
+      and between every points i and<br>
+      j, there must be 2 vertex-disjoint paths i.e. they should be part
+      of a cycle. Also, since every<br>
+      pair must have two paths between them, the graph must be
+      connected. Finally, because of the<br>
+      weights, the graph can have at most n edges. Hence, it must have
+      exactly n edges and exactly<br>
+      one cycle (since a connected graph with n edges can have only 1
+      cycle), which contains all the<br>
+      vertices. This is exactly the Rudrata cycle. It is also easy to
+      see that every Rudrata cycle satisfies<br>
+      the properties for the above RELIABLE NETWORK instance.</big><br>
+  
+
+<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;" src="./workset3-solution_files/saved_resource.html"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}" style="display: none;"></div></body><autoscroll></autoscroll></html>
